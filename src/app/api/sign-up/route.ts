@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   await dbConnect();
 
   try {
-    const { username, email, password } = await request.json();
+    const { username, email, password } = await request.json();  // req json se body le raha hai and body me se username, email, password le raha hai
 
     const existingVerifiedUserByUsername = await UserModel.findOne({
       username,
@@ -86,13 +86,13 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } catch (error) {
-    console.error('Error registering user:', error);
+    console.error('Error registering user:', error); // ye backend pe show hoga
     return Response.json(
       {
         success: false,
-        message: 'Error registering user',
+        message: 'Error registering user',  // ye frontend pe show hoga
       },
-      { status: 500 }
+      { status: 500 } // yeh server error hai
     );
   }
 }

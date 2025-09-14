@@ -20,7 +20,7 @@ import { verifySchema } from '@/schemas/verifySchema';
 
 export default function VerifyAccount() {
   const router = useRouter();
-  const params = useParams<{ username: string }>();
+  const params = useParams<{ username: string }>();  // <{ username: string }> kro y na kro to bhi chalega
   const { toast } = useToast();
   const form = useForm<z.infer<typeof verifySchema>>({
     resolver: zodResolver(verifySchema),

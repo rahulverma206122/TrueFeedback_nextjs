@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
+// ye teno shadcn ke form ke doumentation se liye hai
 import { signIn } from 'next-auth/react';
 import {
   Form,
@@ -31,14 +32,14 @@ export default function SignInForm() {
 
   const { toast } = useToast();
   const onSubmit = async (data: z.infer<typeof signInSchema>) => {
-    const result = await signIn('credentials', {
+    const result = await signIn('credentials', {  // signIN method se sign in kar raha hai sign-auth me jo humne banaya hai
       redirect: false,
       identifier: data.identifier,
       password: data.password,
     });
 
     if (result?.error) {
-      if (result.error === 'CredentialsSignin') {
+      if (result.error === 'CredentialsSignin') { // CredentialsSignin ye next-auth ka default error message hai jab username ya password galat ho
         toast({
           title: 'Login Failed',
           description: 'Incorrect username or password',

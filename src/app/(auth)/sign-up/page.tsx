@@ -106,7 +106,7 @@ export default function SignUpForm() {
           </h1>
           <p className="mb-4">Sign up to start your anonymous adventure</p>
         </div>
-        <Form {...form}>
+        <Form {...form}>  // ye pura humne shadcn ke form ke doumentation se liye hai
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               name="username"

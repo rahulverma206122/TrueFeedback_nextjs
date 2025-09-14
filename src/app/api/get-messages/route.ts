@@ -16,13 +16,14 @@ export async function GET(request: Request) {
       { status: 401 }
     );
   }
-  const userId = new mongoose.Types.ObjectId(_user._id);
+  const userId = new mongoose.Types.ObjectId(_user._id); // ye id string ko mongoose ke ObjectId me convert kar raha hai  kyu ki aggregation me ObjectId chahiye hota hai
   try {
     const user = await UserModel.aggregate([
       { $match: { _id: userId } },
-      { $unwind: '$messages' },
-      { $sort: { 'messages.createdAt': -1 } },
-      { $group: { _id: '$_id', messages: { $push: '$messages' } } },
+      { $unwind: '$messages' }, // unwind array ke har element ko alag document bana deta hai see pipeline 25:00
+      { $sort: { 'messages.createdAt': -1 } }, // sort kar raha hai messages ko createdAt ke basis pe descending order me
+      //{ $limit: 20 }, // sirf 20 messages le raha hai
+      { $group: { _id: '$_id', messages: { $push: '$messages' } } }, // fir se group kar raha hai messages ko ek array me
     ]).exec();
 
     if (!user || user.length === 0) {

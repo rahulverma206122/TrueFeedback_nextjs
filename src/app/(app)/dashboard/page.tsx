@@ -17,7 +17,7 @@ import { useForm } from 'react-hook-form';
 import { AcceptMessageSchema } from '@/schemas/acceptMessageSchema';
 
 function UserDashboard() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]); // yha messages ka array aara hai
   const [isLoading, setIsLoading] = useState(false);
   const [isSwitchLoading, setIsSwitchLoading] = useState(false);
 
@@ -33,7 +33,7 @@ function UserDashboard() {
     resolver: zodResolver(AcceptMessageSchema),
   });
 
-  const { register, watch, setValue } = form;
+  const { register, watch, setValue } = form;  // ye sab react hook form se liya hai see documentation
   const acceptMessages = watch('acceptMessages');
 
   const fetchAcceptMessages = useCallback(async () => {

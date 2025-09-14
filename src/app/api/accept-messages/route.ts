@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     const updatedUser = await UserModel.findByIdAndUpdate(
       userId,
       { isAcceptingMessages: acceptMessages },
-      { new: true }
+      { new: true }  // isse hota ye h ki new value jo milegi wo updated value hogi, old value nhi
     );
 
     if (!updatedUser) {

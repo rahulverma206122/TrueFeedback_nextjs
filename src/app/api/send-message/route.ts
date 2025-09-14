@@ -4,10 +4,10 @@ import { Message } from '@/model/User';
 
 export async function POST(request: Request) {
   await dbConnect();
-  const { username, content } = await request.json();
+  const { username, content } = await request.json(); // request body se username aur content nikal raha hai
 
   try {
-    const user = await UserModel.findOne({ username }).exec();
+    const user = await UserModel.findOne({ username }).exec();  // 
 
     if (!user) {
       return Response.json(
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const newMessage = { content, createdAt: new Date() };
+    const newMessage = { content, createdAt: new Date() };  // meassge ke andar ye do prperties h
 
     // Push the new message to the user's messages array
     user.messages.push(newMessage as Message);

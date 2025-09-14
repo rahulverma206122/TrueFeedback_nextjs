@@ -18,7 +18,7 @@ interface RootLayoutProps {
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" >
-      <AuthProvider>
+      <AuthProvider>  // pura app ko AuthProvider se wrap kar diya taki hum kahi bhi session ka access kar sake ye AuthProvider src/context/AuthProvider.tsx me bana hai
         <body className={inter.className}>
           {children}
           <Toaster />

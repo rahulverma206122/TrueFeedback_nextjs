@@ -7,8 +7,8 @@ import { Button } from './ui/button';
 import { User } from 'next-auth';
 
 function Navbar() {
-  const { data: session } = useSession();
-  const user : User = session?.user;
+  const { data: session } = useSession(); // session se data nikal liya 
+  const user : User = session?.user;  // ye sab documentation se liya hai
 
   return (
     <nav className="p-4 md:p-6 shadow-md bg-gray-900 text-white">

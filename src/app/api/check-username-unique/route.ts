@@ -1,6 +1,6 @@
 import dbConnect from '@/lib/dbConnect';
 import UserModel from '@/model/User';
-import { z } from 'zod';
+import { z } from 'zod'; // zod ek schema validation library hai jo ki typescript ke sath use hoti hai, You are importing the main Zod object (z) from the library. , Using z, you can create schemas to validate data.
 import { usernameValidation } from '@/schemas/signUpSchema';
 
 const UsernameQuerySchema = z.object({
